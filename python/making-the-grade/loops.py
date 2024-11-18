@@ -42,7 +42,7 @@ def above_threshold(student_scores, threshold):
         if score >= threshold:
             best.append(score)
     
-    return best        
+    return best
 
 
 def letter_grades(highest):
@@ -65,6 +65,7 @@ def letter_grades(highest):
     
     return lower_thresholds
 
+
 def student_ranking(student_scores, student_names):
     """Organize the student's rank, name, and grade information in descending order.
 
@@ -74,11 +75,12 @@ def student_ranking(student_scores, student_names):
     """
 
     ranks = []
-    for rank in range(1, len(student_scores)):
-        next_rank = rank + ". " + student_names[(rank - 1)] + ": " + student_scores[(rank - 1)]
+    for rank in range(1, (len(student_scores) + 1)):
+        next_rank = f'{rank}. {student_names[(rank - 1)]}: {student_scores[(rank - 1)]}'
         ranks.append(next_rank)
 
     return ranks
+
 
 def perfect_score(student_info):
     """Create a list that contains the name and grade of the first student to make a perfect score on the exam.
@@ -87,4 +89,9 @@ def perfect_score(student_info):
     :return: list - first `[<student name>, 100]` or `[]` if no student score of 100 is found.
     """
 
-    pass
+    for i in range(0, (len(student_info))):
+        if student_info[i][1] == 100:
+            return student_info[i]
+ 
+    return []
+           
