@@ -7,8 +7,11 @@ def round_scores(student_scores):
     :param student_scores: list - float or int of student exam scores.
     :return: list - student scores *rounded* to nearest integer value.
     """
+    rounded_scores = []
+    for score in student_scores:
+        rounded_scores.append(round(score))
 
-    pass
+    return rounded_scores
 
 
 def count_failed_students(student_scores):
@@ -18,7 +21,12 @@ def count_failed_students(student_scores):
     :return: int - count of student scores at or below 40.
     """
 
-    pass
+    fails = 0
+    for score in student_scores:
+        if score <= 40:
+            fails += 1
+
+    return fails
 
 
 def above_threshold(student_scores, threshold):
@@ -28,8 +36,13 @@ def above_threshold(student_scores, threshold):
     :param threshold: int - threshold to cross to be the "best" score.
     :return: list - of integer scores that are at or above the "best" threshold.
     """
-
-    pass
+    best = []
+    
+    for score in student_scores:
+        if score >= threshold:
+            best.append(score)
+    
+    return best        
 
 
 def letter_grades(highest):
@@ -45,9 +58,12 @@ def letter_grades(highest):
             71 <= "B" <= 85
             86 <= "A" <= 100
     """
-
-    pass
-
+    lower_thresholds = []
+    increment = round((highest - 40) / 4)
+    for grade in range(41, highest, increment):
+        lower_thresholds.append(grade)
+    
+    return lower_thresholds
 
 def student_ranking(student_scores, student_names):
     """Organize the student's rank, name, and grade information in descending order.
@@ -57,8 +73,12 @@ def student_ranking(student_scores, student_names):
     :return: list - of strings in format ["<rank>. <student name>: <score>"].
     """
 
-    pass
+    ranks = []
+    for rank in range(1, len(student_scores)):
+        next_rank = rank + ". " + student_names[(rank - 1)] + ": " + student_scores[(rank - 1)]
+        ranks.append(next_rank)
 
+    return ranks
 
 def perfect_score(student_info):
     """Create a list that contains the name and grade of the first student to make a perfect score on the exam.
