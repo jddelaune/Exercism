@@ -75,8 +75,8 @@ def student_ranking(student_scores, student_names):
     """
 
     ranks = []
-    for rank in range(1, (len(student_scores) + 1)):
-        next_rank = f'{rank}. {student_names[(rank - 1)]}: {student_scores[(rank - 1)]}'
+    for rank, score in enumerate(student_scores):
+        next_rank = f'{rank + 1}. {student_names[rank]}: {score}'
         ranks.append(next_rank)
 
     return ranks
@@ -89,9 +89,8 @@ def perfect_score(student_info):
     :return: list - first `[<student name>, 100]` or `[]` if no student score of 100 is found.
     """
 
-    for i in range(0, (len(student_info))):
-        if student_info[i][1] == 100:
-            return student_info[i]
- 
-    return []
-           
+    for item, stu_score in enumerate(student_info):
+        if stu_score[1] == 100:
+            return student_info[item]
+
+    return []          
